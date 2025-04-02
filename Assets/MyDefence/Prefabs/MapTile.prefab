@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7702462062854856559}
   - component: {fileID: 5985273521507426572}
   - component: {fileID: 4181719932592414102}
+  - component: {fileID: -5399035964833885544}
   m_Layer: 0
   m_Name: MapTile
   m_TagString: Untagged
@@ -65,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c3cb7602f8dbdf545b1025d48d23fe3a, type: 2}
+  - {fileID: 2100000, guid: addad29f93256d04a9b1da3375f9a06a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,3 +109,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5399035964833885544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6502586935002327686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22532425f77de5f4c8c4131ca8c4e9e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverColor: {r: 0.6784314, g: 0.28854403, b: 0.16862744, a: 0}
+  hoverMaterial: {fileID: 2100000, guid: aa4312fca8c0b8843bf63b0672425d17, type: 2}

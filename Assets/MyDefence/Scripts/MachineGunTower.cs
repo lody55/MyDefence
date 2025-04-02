@@ -109,7 +109,8 @@ namespace MyDefence
                 bullet.SetTarget(target);
             }
 
-            if (target == null) return; // 타겟이 없으면 발사하지 않음
+            if (target == null) return; // 타겟이 없으면 발사하지 않음.
+
 
             
         }
