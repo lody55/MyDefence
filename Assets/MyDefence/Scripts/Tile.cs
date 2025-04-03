@@ -10,7 +10,7 @@ namespace MyDefence
         //타일의 원래 색깔
         //private Color startColor;
         //타일을 그리는 Renderer
-        private Renderer renderer;
+        //private Renderer renderer;!!!!!!!!!!!!!!!!!!!
 
         //마우스를 올려놓으면 변하는 메터리얼
         public Material hoverMaterial;
@@ -24,10 +24,10 @@ namespace MyDefence
         void Start()
         {
             //참조 
-            renderer = this.transform.GetComponent<Renderer>();
+           // renderer = this.transform.GetComponent<Renderer>();!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             //초기화
-            starMaterial = renderer.material;
+            starMaterial = GetComponent<Renderer>().material;
         }
 
         
@@ -35,7 +35,7 @@ namespace MyDefence
         {
             Debug.Log("터렛을 설치합니다");
             //renderer.material.color = hoverColor;
-            renderer.material = hoverMaterial;
+            GetComponent<Renderer>().material = hoverMaterial;
         }
         
         private void OnMouseDown()
@@ -52,7 +52,7 @@ namespace MyDefence
         {
             Debug.Log("OnMouseExit");
             // renderer.material.color = startColor;
-            renderer.material = starMaterial;
+            GetComponent<Renderer>().material = starMaterial;
         }
     }
 }

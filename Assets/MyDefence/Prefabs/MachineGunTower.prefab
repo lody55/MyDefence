@@ -166,11 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46319304a838381479d6b24acc61fed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 7
+  attackRange: 30
   enemyTag: Enemy
   partToRotate: {fileID: 8865277565257623156}
-  turnSpeed: 5
-  shootTimer: 1
+  turnSpeed: 10
+  shootTimer: 0.2
   bulletPrefab: {fileID: 6023792641504630238, guid: eb5e82fba150cd84fb5c25ba0f8aacb8, type: 3}
   firePoint: {fileID: 3426058929640914811}
 --- !u!1 &4341753562588308901
