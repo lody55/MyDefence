@@ -53,6 +53,7 @@ namespace MyDefence
             {
                 
                 target = WayPoints.wayPoints[wayPointIndex];
+                
             }
             else
             {

@@ -43,9 +43,14 @@ namespace MyDefence
 
         private void Start()
         {
-
-            //초기화
-            towerToBulid = machineGunPrefab;
+            
+            
+          // towerToBulid = machineGunPrefab;
+        }
+        //타일에 설치할 타워 프리펩 오브젝트 저장하기
+        public void SetTowerToBuild(GameObject tower)
+        {
+            towerToBulid = tower;
         }
     }
 }
