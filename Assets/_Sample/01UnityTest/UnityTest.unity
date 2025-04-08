@@ -150,6 +150,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 377433791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &126463802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 126463804}
+  - component: {fileID: 126463803}
+  m_Layer: 0
+  m_Name: GoldManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &126463803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126463802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adac5feea1f9474189588aa73e77208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  result: {fileID: 0}
+  muchineGunButton: {fileID: 443539509}
+  rocketButton: {fileID: 490075837}
+--- !u!4 &126463804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126463802}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &150996091
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,6 +1005,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 126463803}
+        m_TargetAssemblyTypeName: MyDefence.PlayerStats, Assembly-CSharp
+        m_MethodName: MuchinGunButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &443539510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1175,6 +1234,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 812514429}
         m_TargetAssemblyTypeName: MyDefence.BulidMenu, Assembly-CSharp
+        m_MethodName: RocketTowerButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 126463803}
+        m_TargetAssemblyTypeName: MyDefence.PlayerStats, Assembly-CSharp
         m_MethodName: RocketTowerButton
         m_Mode: 1
         m_Arguments:
@@ -1451,8 +1522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a887eb3c8d0773a418e6b4318484d245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  machineGunPrefab: {fileID: 1098859431820034578, guid: 64682d9ed6010014484fea1295c672db, type: 3}
-  rocketTowerPrefab: {fileID: 1115954312515288042, guid: 304cb40c2e9134d48aa13f48f4ced321, type: 3}
 --- !u!4 &608122745
 Transform:
   m_ObjectHideFlags: 0
@@ -2139,6 +2208,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601834324d6c55640a35e1f2c3841a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machineGunTower:
+    towerPrefab: {fileID: 1098859431820034578, guid: 64682d9ed6010014484fea1295c672db, type: 3}
+    cost: 100
+  rocketTower:
+    towerPrefab: {fileID: 1115954312515288042, guid: 304cb40c2e9134d48aa13f48f4ced321, type: 3}
+    cost: 150
 --- !u!1 &812609774
 GameObject:
   m_ObjectHideFlags: 0
@@ -4447,71 +4522,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afe28bf1f6e537d408e11ef937cf520b, type: 3}
---- !u!1001 &1222646877652090845
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 447467516778602690, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 3871588715729574618, guid: 8341793b89c4f9e47bef7789b09af16c, type: 3}
-    - target: {fileID: 447467516778602690, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: partToRotate
-      value: 
-      objectReference: {fileID: 6915734847689446087}
-    - target: {fileID: 1923308964963329364, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: m_Name
-      value: RocketTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825711199410116358, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.9373193
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825711199410116358, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.15000057
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825711199410116358, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8.783424
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825711199410116358, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825711199410116358, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825711199410116358, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825711199410116358, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825711199410116358, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825711199410116358, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7825711199410116358, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
 --- !u!1001 &2843962322773158188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4598,68 +4608,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
---- !u!4 &6915734847689446087 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6261526846657569346, guid: 7e93c244126384a4fafdb82f6c5fcd83, type: 3}
-  m_PrefabInstance: {fileID: 1222646877652090845}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &8981287402729055657
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3829361544050235683, guid: 259ea557d9c521e4388233d4dde9fce0, type: 3}
-      propertyPath: m_Name
-      value: RocketImpact
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569632489873827393, guid: 259ea557d9c521e4388233d4dde9fce0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.1853428
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569632489873827393, guid: 259ea557d9c521e4388233d4dde9fce0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569632489873827393, guid: 259ea557d9c521e4388233d4dde9fce0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.861429
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569632489873827393, guid: 259ea557d9c521e4388233d4dde9fce0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569632489873827393, guid: 259ea557d9c521e4388233d4dde9fce0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569632489873827393, guid: 259ea557d9c521e4388233d4dde9fce0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569632489873827393, guid: 259ea557d9c521e4388233d4dde9fce0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569632489873827393, guid: 259ea557d9c521e4388233d4dde9fce0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569632489873827393, guid: 259ea557d9c521e4388233d4dde9fce0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569632489873827393, guid: 259ea557d9c521e4388233d4dde9fce0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 259ea557d9c521e4388233d4dde9fce0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4676,5 +4624,4 @@ SceneRoots:
   - {fileID: 301336960}
   - {fileID: 1236432430}
   - {fileID: 608122745}
-  - {fileID: 1222646877652090845}
-  - {fileID: 8981287402729055657}
+  - {fileID: 126463804}

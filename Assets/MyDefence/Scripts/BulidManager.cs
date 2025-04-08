@@ -32,8 +32,8 @@ namespace MyDefence
         //타일에 설치할 타워 프리펩 오브젝트
         private GameObject towerToBulid;
         //타워 프리펩
-        public GameObject machineGunPrefab;
-        public GameObject rocketTowerPrefab;
+        //public GameObject machineGunPrefab;
+        //public GameObject rocketTowerPrefab;
         #endregion
 
         //타일에 설치할 타워 프리펩 오브젝트 얻어오기
