@@ -98,7 +98,7 @@ namespace MyDefence
         //탄환 발사
         private void Shoot()
         {
-            Debug.Log("Shoot!!!!");
+            //Debug.Log("Shoot!!!!");
             //Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
             GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Bullet bullet = bulletGO.GetComponent<Bullet>();

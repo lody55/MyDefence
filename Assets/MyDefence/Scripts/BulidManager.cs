@@ -28,16 +28,34 @@ namespace MyDefence
         }
         #endregion
 
-        #region Filed
-        //타일에 설치할 타워 프리펩 오브젝트
-        private GameObject towerToBulid;
+        #region Field
+        //타일에 설치할 타워 정보를 저장하는 변수 
+        private TowerBluePrint towerToBulid;
+
+        //타일에 설치할 타워의 건설 비용
+        private int buildCost;
+
+
         //타워 프리펩
         //public GameObject machineGunPrefab;
         //public GameObject rocketTowerPrefab;
         #endregion
+        #region Property
+        //타워 건설 비용을 체크하는 프로퍼티 = 부족하면 true 
+        public bool NotEnoughMoney
+        {
+            get { return PlayerStats.Money < towerToBulid.cost; }
+        }
+
+        //건설할 타워가 있는지 체크, 건설할 타워를 선택하지 않았을때
+        public bool CannotBuild
+        {
+            get { return towerToBulid == null; }
+        }
+        #endregion
 
         //타일에 설치할 타워 프리펩 오브젝트 얻어오기
-        public GameObject GetTowerToBuild()
+        public TowerBluePrint GetTowerToBuild()
         {
             return towerToBulid;
         }
@@ -49,9 +67,21 @@ namespace MyDefence
           // towerToBulid = machineGunPrefab;
         }
         //타일에 설치할 타워 프리펩 오브젝트 저장하기
-        public void SetTowerToBuild(GameObject tower)
+        public void SetTowerToBuild(TowerBluePrint tower)
         {
             towerToBulid = tower;
+
+            if (tower == null)
+            {
+                buildCost = 0;
+                return;
+            }
+
+            buildCost = tower.cost; //null아닐 때 실행
         }
+        //public int GetBuildCost()
+        //{
+        //    return buildCost;
+        //}
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace MyDefence
 {
@@ -10,6 +11,7 @@ namespace MyDefence
         public float damageRange = 3.5f;
         //emnemy 오브젝트 태그 스트링
         public string enemyTag = "Enemy";
+        //private float atkDamage = 50f;
         #endregion
 
         //기즈모 데미지 영역 그리기
@@ -36,6 +38,7 @@ namespace MyDefence
         }
 
         //폭발 - 데미지 영역(3.5f)에 있는 적을 찾아 킬
+        //폭발 지점으로부터 거리를 구하여 거리에 반비례하여 데미지 주기
         private void Explosion()
         {
             Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, damageRange);
@@ -45,10 +48,22 @@ namespace MyDefence
                 //데미지 영역안의 모든 충돌체에서 Enemy 찾기
                 if(hitCollider.tag == enemyTag)
                 {
-                    Destroy(hitCollider.gameObject);
+                    //거리구하기
+                    float distance = Vector3.Distance(this.transform.position, hitCollider.transform.position);
+                    //거리 반비례로 데미지 구하기
+                    float damage = atkDamage * ((damageRange - distance ) / damageRange);
+
+                    Enemy enemy = hitCollider.GetComponent<Enemy>();
+                    if(enemy != null)
+                    {
+                        enemy.TakeDamage(damage);
+                    }
+                    
+                    
                 }
             }
         }
+        
 
     }
     

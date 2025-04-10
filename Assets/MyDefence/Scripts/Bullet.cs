@@ -13,6 +13,8 @@ namespace MyDefence
         //타격 이펙트 프리펩
         public GameObject bulletImpactPrefab;
 
+        protected float atkDamage = 50f;
+
         #endregion
 
         public void SetTarget(Transform _target)
@@ -59,13 +61,28 @@ namespace MyDefence
             GameObject effectGo = Instantiate(bulletImpactPrefab, this.transform.position, Quaternion.identity);
             Destroy(effectGo, 2f);
 
-            Debug.Log("HitTarget!!");
+            //Debug.Log("HitTarget!!");
 
-            // 타겟 게임오브젝트 킬
-            Destroy(target.gameObject);
+            // 타겟 게임오브젝트 데미지 주기
+            AtkTarget(target);
+            
 
             // 탄환 게임오브젝트 킬
             Destroy(this.gameObject);
+
+
+        }
+        //매개변수로 들어온 타겟이게 데미지 주기
+        protected void AtkTarget(Transform _target)
+        {
+            //AtkDamage만큼 타겟의 hp 감산
+            Enemy enemy = _target.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(atkDamage);
+            }
+            //Debug.Log("target에게 데미지 주기");
+            
         }
     }
 }

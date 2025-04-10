@@ -10,11 +10,11 @@ namespace MyDefence
         //소지금
         private static int money;
 
-        
         public TextMeshProUGUI result;
 
+        //Life
+        private static int life;
 
-        
 
         //Button UI
         public Button muchineGunButton;
@@ -27,12 +27,20 @@ namespace MyDefence
         {
             get { return money; }
         }
+
+        public static int Life
+        {
+            get { return life; }
+        }
         #endregion
 
         public void Start()
         {
+            //초기화
             money = 400;
-            Debug.Log("소지금 400원 지급!");
+            Debug.Log("초기소지금 400원 지급!");
+            life = 10;
+            Debug.Log("초기 라이프 : 10");
         }
         public void Update()
         {
@@ -57,13 +65,13 @@ namespace MyDefence
                 rocketButton.interactable = false;
             }
         }
-        public void AddMoney(int amount)
+        public static void AddMoney(int amount)
         {
             money += amount;
         }
-        public bool UseMoney(int amount)
+        public static bool UseMoney(int amount)
         {
-            if(money < amount)
+            if (money < amount)
             {
                 Debug.Log("소지금이 부족합니다");
                 return false;
@@ -72,7 +80,7 @@ namespace MyDefence
             return true;
         }
 
-        public bool HasGold(int amount)
+        public static bool HasGold(int amount)
         {
             if (money < amount)
             {
@@ -81,25 +89,52 @@ namespace MyDefence
             return true;
         }
 
-        public void MyMoney(int amount)
+        //생명 사용
+        public static void UseLife(int mylife)
         {
-            money = amount;
-            Debug.Log($"현재 소지금 : {amount}");
-        }
-        public void MuchinGunButton()
-        {
-            if (UseMoney(100) == true)
+            life -= mylife;
+            if(life <= 0)
             {
-                Debug.Log("머신건 타워 구입");
+                life = 0;
+                Debug.Log("당신은 패배 했습니다");
+                
             }
         }
-        public void RocketTowerButton()
+        //생명 추가
+        public static void AddLife(int mylife)
         {
-            if(UseMoney(150) == true)
-            {
-                Debug.Log("로켓 타워 구입");
-            }
+            life += mylife;
         }
+
+
+
+
+
+
+
+
+
+
+
+        //public void MyMoney(int amount)
+        //{
+        //    money = amount;
+        //    Debug.Log($"현재 소지금 : {amount}");
+        //}
+        //public void MuchinGunButton()
+        //{
+        //    if (UseMoney(100) == true)
+        //    {
+        //        Debug.Log("머신건 타워 구입");
+        //    }
+        //}
+        //public void RocketTowerButton()
+        //{
+        //    if(UseMoney(150) == true)
+        //    {
+        //        Debug.Log("로켓 타워 구입");
+        //    }
+        //}
 
 
         //초기 소지금 400
