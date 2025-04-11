@@ -7,7 +7,8 @@ namespace MyDefence
         //필드
         #region Field
         [SerializeField]
-        private float speed = 5f;
+        private float moveSpeed = 5f;
+        private float startMoveSpeed; //이동속도 - origin
         private Vector3 targetPosition;     
         private int wayPointIndex = 0;   //웨이포인트 배열의 인덱스
         private Transform target;   //웨이포인트 오브젝트의 트랜스폼 객체
@@ -25,7 +26,7 @@ namespace MyDefence
             target = WayPoints.wayPoints[wayPointIndex];
             
             hp = startHp;
-
+            startMoveSpeed = moveSpeed;
         }
 
         // Update is called once per frame
@@ -33,7 +34,7 @@ namespace MyDefence
         {
             //이동 구현
             Vector3 dir = target.position - this.transform.position;
-            transform.Translate(dir.normalized * Time.deltaTime * speed,Space.World);
+            transform.Translate(dir.normalized * Time.deltaTime * moveSpeed,Space.World);
 
             //targetPosition 도착 판정
             float distance = Vector3.Distance(target.position, this.transform.position);
@@ -42,6 +43,8 @@ namespace MyDefence
                 GetNextTargetPosition();
             }
 
+            //속도 원복
+            moveSpeed = startMoveSpeed;
 
         }
         //다음 타겟포지션 얻어오기
@@ -97,6 +100,12 @@ namespace MyDefence
             //킬
             Destroy(this.gameObject,0f);
             Destroy(effectGo, 2f);
+        }
+
+        //매개변수로 입력받은 감속률 만큼 속도 감속
+        public void Slow(float rate)
+        {
+            moveSpeed = startMoveSpeed * (1-rate);
         }
 
 

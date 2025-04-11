@@ -7,6 +7,7 @@ namespace MyDefence
         //타워(건설)정보를 가지고 있는 객체
         public TowerBluePrint machineGunTower;
         public TowerBluePrint rocketTower;
+        public TowerBluePrint laserTower;
         #endregion
         //MachineGunButton 클릭시 호출되는 함수
         public void MachinGunButton()
@@ -23,5 +24,13 @@ namespace MyDefence
             BulidManager.Instance.SetTowerToBuild(rocketTower);
 
         }
+        //LaserTowerButton 클릭시 호출되는 함수
+        public void LaserTowerButton()
+        {
+            Debug.Log("towerToBulid에 LaserTower을 저장한다");
+            BulidManager.Instance.SetTowerToBuild(laserTower);
+
+        }
+
     }
 }

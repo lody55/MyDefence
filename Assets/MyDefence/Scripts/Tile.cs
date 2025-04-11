@@ -97,6 +97,7 @@ namespace MyDefence
             }
 
             Debug.Log($"타워 건설 완료! 남은 소지금 {PlayerStats.Money}");
+            
         }
 
 

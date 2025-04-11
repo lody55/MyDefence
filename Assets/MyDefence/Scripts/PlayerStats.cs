@@ -19,6 +19,7 @@ namespace MyDefence
         //Button UI
         public Button muchineGunButton;
         public Button rocketButton;
+        public Button LaserButton;
         #endregion
 
         #region Property
@@ -63,6 +64,16 @@ namespace MyDefence
             {
                 //button3.image.color = Color.red;
                 rocketButton.interactable = false;
+            }
+            if (HasGold(250))
+            {
+                //button3.image.color = Color.white;
+                LaserButton.interactable = true;
+            }
+            else
+            {
+                //button3.image.color = Color.red;
+                LaserButton.interactable = false;
             }
         }
         public static void AddMoney(int amount)

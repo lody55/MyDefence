@@ -7,10 +7,13 @@ namespace MyDefence
         #region Field
         //공격 범위
         public float attackRange = 7f;
-        private Transform target;
+        //가장 가까운 적
+        protected Transform target;
+        protected Enemy targetEnemy;
+
         //Enemy tag
         public string enemyTag = "Enemy";
-        private float Interval = 0.5f;
+        private float Interval = 0.1f;
 
         public Transform partToRotate;
         public float turnSpeed = 5f;
@@ -50,15 +53,18 @@ namespace MyDefence
             if (nearEnemy != null && minDistance <= attackRange)
             {
                 target = nearEnemy.transform;
+                targetEnemy = target.GetComponent<Enemy>();
                 //Debug.Log("Find target");
             }
             else
             {
                 target = null;
+                targetEnemy = null;
             }
         }
 
-        void Lockon()
+
+        protected virtual void Lockon()
         {
             //타겟이 없으면
             if (target == null) return;
@@ -75,7 +81,7 @@ namespace MyDefence
             partToRotate.rotation = smoothRotation;
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (target == null) return; // 타겟이 없으면 발사하지 않음.
 
