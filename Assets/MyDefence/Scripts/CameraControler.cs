@@ -26,16 +26,20 @@ namespace MyDefence
         // Update is called once per frame
         void Update()
         {
+            //게임 오버 체크
+            if (GameManager.IsGameOver)
+                return;
+
             //isCannnotMove가 true면 return 아래 코드를 실행하지 말라
             
                 
             //esc키 누르면 이동 불가 isCannotMove = true (!isCannotMove)
             //esc키 한번더 누르면 이동가능 isCannotMove = false (!isCannotMove)
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                isCannnotMove = !isCannnotMove; //토글 기능
+            //if (Input.GetKeyDown(KeyCode.Escape))
+            //{
+            //    isCannnotMove = !isCannnotMove; //토글 기능
                     
-            }
+            //}
             if (isCannnotMove)
                 return;
             //W,S,A,D키 (또는 키보드의 상하좌우 화살표)값을 받아

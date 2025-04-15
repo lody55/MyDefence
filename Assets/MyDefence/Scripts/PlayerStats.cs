@@ -11,6 +11,7 @@ namespace MyDefence
         private static int money;
 
         public TextMeshProUGUI result;
+        
 
         //Life
         private static int life;
@@ -20,6 +21,7 @@ namespace MyDefence
         public Button muchineGunButton;
         public Button rocketButton;
         public Button LaserButton;
+
         #endregion
 
         #region Property
@@ -33,6 +35,11 @@ namespace MyDefence
         {
             get { return life; }
         }
+
+        public static int Rounds
+        {
+            get; set;
+        }
         #endregion
 
         public void Start()
@@ -42,6 +49,7 @@ namespace MyDefence
             Debug.Log("초기소지금 400원 지급!");
             life = 10;
             Debug.Log("초기 라이프 : 10");
+            Rounds = 0;
         }
         public void Update()
         {
@@ -75,6 +83,7 @@ namespace MyDefence
                 //button3.image.color = Color.red;
                 LaserButton.interactable = false;
             }
+            
         }
         public static void AddMoney(int amount)
         {
@@ -108,7 +117,8 @@ namespace MyDefence
             {
                 life = 0;
                 Debug.Log("당신은 패배 했습니다");
-                
+                Time.timeScale = 0f;
+                //GameManager.Instance.GameOver();
             }
         }
         //생명 추가
@@ -116,7 +126,7 @@ namespace MyDefence
         {
             life += mylife;
         }
-
+        
 
 
 

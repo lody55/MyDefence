@@ -22,11 +22,15 @@ namespace MyDefence
 
         void Update()
         {
+            
+
             countdown += Time.deltaTime;
 
             if (countdown >= 5)
             {
-                waveCount++; // 
+                waveCount++;
+                //라운드 카운트
+                PlayerStats.Rounds++;
                 StartCoroutine(SponEnemy(waveCount));
 
                 

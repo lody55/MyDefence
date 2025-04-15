@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 namespace MyDefence
 {
@@ -35,7 +36,9 @@ namespace MyDefence
         //타일에 설치할 타워의 건설 비용
         private int buildCost;
 
+        public TileUI tileUI;
 
+        private Tile selectedTile;
         //타워 프리펩
         //public GameObject machineGunPrefab;
         //public GameObject rocketTowerPrefab;
@@ -83,5 +86,25 @@ namespace MyDefence
         //{
         //    return buildCost;
         //}
+
+        //타워가 설치된 타일을 선택
+        public void SelectTile(Tile tile)
+        {
+            // 이미 선택된 타일을 다시 클릭하면 UI 닫기
+            if (selectedTile == tile)
+            {
+                DeSelectTile(); // UI 숨기고 선택 해제
+                return;
+            }
+
+            selectedTile = tile; // 새로운 타일 선택
+            tileUI.ShowTileUI(tile);
+        }
+
+        public void DeSelectTile()
+        {
+            tileUI.HideTileUI();
+            selectedTile = null;
+        }
     }
 }
