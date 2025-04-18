@@ -12,5 +12,8 @@ namespace MyDefence
 
         public GameObject upgradePrefab;    //타워 업그레이드에 필요한 프리펩
         public int upgradeCost;     //타워 업그레이드에 필요한 비용
+
+        public GameObject secondUp;     //두번쨰업
+        public int secondCost;      //두번째 비용
     }
 }

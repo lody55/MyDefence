@@ -70,6 +70,10 @@ namespace MyDefence
 
         private void OnMouseDown()
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
             //Debug.Log($"현재 타워 상태: {(tower == null ? "없음" : "설치됨")}");
             if (tower != null)
             {
@@ -78,7 +82,7 @@ namespace MyDefence
                 return; 
             }
 
-                if (EventSystem.current.IsPointerOverGameObject()) return;
+                
 
             if (bulid.CannotBuild) return;
 

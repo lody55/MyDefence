@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7825711199410116358}
   - component: {fileID: 447467516778602690}
   m_Layer: 10
-  m_Name: RocketTower 1
+  m_Name: RocketTowerUP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.9373193, y: 0.15000057, z: -8.783424}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7848237254272674844}

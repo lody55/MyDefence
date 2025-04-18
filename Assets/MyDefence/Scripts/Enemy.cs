@@ -1,11 +1,13 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.UI;
 namespace MyDefence
 {
     public class Enemy : MonoBehaviour
     {
         //필드
         #region Field
+        [SerializeField] Image EnemyUI;
         [SerializeField]
         private float moveSpeed = 5f;
         private float startMoveSpeed; //이동속도 - origin
@@ -79,6 +81,8 @@ namespace MyDefence
             hp -= damage;
             //Debug.Log($"현재 체력 : {hp}");
 
+            EnemyUI.fillAmount = hp / startHp;
+
             //데미지 효과
 
 
@@ -108,6 +112,7 @@ namespace MyDefence
             moveSpeed = startMoveSpeed * (1-rate);
         }
 
+        
 
 
     }
