@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 namespace MyDefence
 {
     public class GameManager : MonoBehaviour
@@ -8,8 +9,13 @@ namespace MyDefence
         public bool isCheat = false;
 
         public GameObject gameOverUI;
+        public GameObject levelClearUI;
         private static bool isGameOver = false;
         private bool isPaused;
+
+        //레벨 클리어
+        //[SerializeField]private int unLockLevel = 2;
+        [SerializeField] GameObject gameClearUI;
         #endregion
 
         #region Property
@@ -41,10 +47,10 @@ namespace MyDefence
 
             //Cheating
             //M키를 누르면 10만골드 지급
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                ShowMeTheMoney();
-            }
+            //if (Input.GetKeyDown(KeyCode.M))
+            //{
+            //    ShowMeTheMoney();
+            //}
             if (Input.GetKeyDown(KeyCode.O) && isCheat == true)
             {
                 Debug.Log("O 키 눌림 + 치트 활성화됨");
@@ -58,18 +64,38 @@ namespace MyDefence
                     Pause();
             }
         }
-        void ShowMeTheMoney()
-        {
-            if (isCheat == false)
-                return;
-            PlayerStats.AddMoney(1000000);
-        }
+        //void ShowMeTheMoney()
+        //{
+        //    if (isCheat == false)
+        //        return;
+        //    PlayerStats.AddMoney(1000000);
+        //}
         public void GameOver()
         {
             isGameOver = true;
 
             gameOverUI.SetActive(true);
+            //levelClearUI.SetActive(true);
+            
         }
+        public void LevelClear()
+        {
+            //데이터 처리 - 보상,레벨저장
+            //저장되어 있는 데이터 가져오기 
+            int nowLevel = PlayerPrefs.GetInt("NowLevel", 1);
+            int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+            if (nowLevel <= currentLevelIndex)
+            {
+                PlayerPrefs.SetInt("NowLevel", currentLevelIndex + 1); // 다음 레벨을 열어줌
+                PlayerPrefs.Save(); // 저장
+            }
+
+                //UI보여주기
+
+                Debug.Log("Level Clear");
+            gameClearUI.SetActive(true);
+        }
+
         public void Pause()
         {
             Time.timeScale = 0f;

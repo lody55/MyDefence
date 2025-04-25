@@ -12,7 +12,7 @@ namespace Sample
         public TextMeshProUGUI result;
         
 
-        [SerializeField] int startGold;
+        [SerializeField] int startGold;     //초기 소지금
 
         //Button UI
         public Button button2;
@@ -22,16 +22,17 @@ namespace Sample
         private void Start()
         {
             //필드 초기화 - 초기금 설정(초기화)
-            gold = startGold;
-            Debug.Log($"소지금 {gold}골드를 지급 했습니다");
-
+            //GameMoney이름으로 저장된 소지금 있는지 확인
             
+            gold = PlayerPrefs.GetInt("GameMoney",startGold);
+            Debug.Log($"소지금 {gold}골드를 지급 했습니다");
         }
 
         private void Update()
         {
             //소지금(gold)와 UI (골드텍스트) 연결
-            result.text = gold.ToString() + "Gold";
+            //result.text = gold.ToString() + "Gold";
+            result.text = gold.ToString();
 
             if(HasGold(1000))
             {
@@ -73,6 +74,8 @@ namespace Sample
         public void AddGold(int amount)
         {
             gold += amount;
+            
+            PlayerPrefs.SetInt("GameMoney", gold);
         }
         //돈을 쓴다 : 아이템 구매 , 기구 사용 등등.....
         //돈이 부족하면 돈을 사용하지 않고 return false;
@@ -85,7 +88,9 @@ namespace Sample
                 Debug.Log("소지금이 부족합니다");
                 return false;
             }
+            
             gold -= amount;
+            PlayerPrefs.SetInt("GameMoney", gold);
             return true;
         }
 
@@ -119,12 +124,15 @@ namespace Sample
 /*
  MoneyTest
 
-1. 시작하면 소지금을 1000원 지급
+1. 시작하면 소지금을 있는지 체크 - KeyName = "GameMoney"
+- 없는 경우 >> 소지금 1000G 지급
+- 있는 경우 >> 저장된 데이터 불러와서 골드값 적용
+
 2. 화면상단에 소지금 표시(1000G)
 3. 버튼 3개 만들기
-1) 버튼1 = 저축 버튼(1000원 저축)버튼 클릭시 소지금 +1000 디버그로 "1000 Gold Save" 출력
-2) 구매 버튼 = 1000G 아이템 구매, 버튼 클릭시 소지금 -1000 , 디버그로 "1000 Gold Item 구매" 출력
-3) 구매 버튼 = 9000G 아이템 구매 ,버튼 클릭시 소지금 -9000 , 디버그로 "9000 Gold Item 구매" 출력
+1) 버튼1 = 저축 버튼(1000원 저축)버튼 클릭시 소지금 +1000 디버그로 "1000 Gold Save" 출력 - gold Save
+2) 구매 버튼 = 1000G 아이템 구매, 버튼 클릭시 소지금 -1000 , 디버그로 "1000 Gold Item 구매" 출력 - gold Save 
+3) 구매 버튼 = 9000G 아이템 구매 ,버튼 클릭시 소지금 -9000 , 디버그로 "9000 Gold Item 구매" 출력 - gold Save
  
 구매 버튼 : 아이템 구매가 가능하면 버튼 이미지는 White,
             소지금이 부족하여 구매가 불가능하면 이미지는 Red

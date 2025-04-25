@@ -29,6 +29,8 @@ namespace MyDefence
         //발사 위치
         public Transform firePoint;
         #endregion
+
+        
         void Start()
         {
             InvokeRepeating("UpdateTarget", 0f, Interval);
@@ -42,6 +44,13 @@ namespace MyDefence
             GameObject nearEnemy = null;
             foreach (var enemy in enemies)
             {
+                //종점에 도착한 enemy 제거
+                Enemy arriveEnemy = enemy.GetComponent<Enemy>();
+                if(arriveEnemy != null && arriveEnemy.IsArrive == true)
+                {
+                    continue;
+                }
+
                 float distance = Vector3.Distance(this.transform.position, enemy.transform.position);
                 if (distance < minDistance)
                 {
@@ -50,8 +59,11 @@ namespace MyDefence
                 }
             }
             //Debug.Log($"minDistance : {minDistance}");
+            //가장 가까운 적이고, 공격 거리안에 있어야 되고, 종점에 도착하지 않았어야 한다
             if (nearEnemy != null && minDistance <= attackRange)
             {
+
+
                 target = nearEnemy.transform;
                 targetEnemy = target.GetComponent<Enemy>();
                 //Debug.Log("Find target");

@@ -17,7 +17,7 @@ namespace MyDefence
         // Update is called once per frame
         void Update()
         {
-            transform.LookAt(m_MainCamera.transform);
+            //transform.LookAt(m_MainCamera.transform);
         }
     }
 }

@@ -13,7 +13,11 @@ namespace MyDefence
         public Button CONTINUEButton;
         public TextMeshProUGUI roundText;
 
-        
+        //씬페이더
+        public SceneFader fader;
+        private string loadToScene = "MainMenu";
+
+
 
         public GameObject gameOverUI;
         #endregion
@@ -40,22 +44,27 @@ namespace MyDefence
             //모든 초기화(해당 씬을 다시부른다)
             //SceneManager.LoadScene("UnityTest");  //씬이름으로 로드
 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            fader.FadeTo(SceneManager.GetActiveScene().name);
             Time.timeScale = 1f;
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         public void MenuButton()
         {
+            Time.timeScale = 1f;
             Debug.Log("Go to Menu");
+            fader.FadeTo(loadToScene);
         }
         
         public void Continue()
         {
-            Debug.Log("게임 재개");
-            Time.timeScale = 1f;
-            gameOverUI.SetActive(false);
-            GameManager.Instance.ContinueGame();
-
+            fader.FadeOutOnly(() =>
+            {
+                Debug.Log("게임 재개");
+                Time.timeScale = 1f;
+                gameOverUI.SetActive(false);
+                GameManager.Instance.ContinueGame();
+            });
         }
         
 

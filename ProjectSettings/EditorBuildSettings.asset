@@ -5,18 +5,33 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/MyDefence/Scenes/PlayScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/_Sample/01UnityTest/UnityTest.unity
-    guid: db1d2c18acf0c004f80ad0876a7d53a5
+    path: Assets/_Sample/15MainMenu/Title.unity
+    guid: c71be7c2c02ad16438c9aea40d4e24c8
+  - enabled: 1
+    path: Assets/MyDefence/Scenes/Level01.unity
+    guid: cc5c0df7cf6711049877b34dcfd658c3
+  - enabled: 1
+    path: Assets/MyDefence/Scenes/Level02.unity
+    guid: af9ce2e05bbb9744eb1109a407e44566
+  - enabled: 1
+    path: Assets/MyDefence/Scenes/Level03.unity
+    guid: 829fd5a05d8c3d44fa8a93c4387a429b
+  - enabled: 1
+    path: Assets/MyDefence/Scenes/Level04.unity
+    guid: 76a4f752877c4d649be0f7c561d7ddad
+  - enabled: 1
+    path: Assets/MyDefence/Scenes/Level05.unity
+    guid: 8594e32eff90e064eb36d2fc2a724b70
+  - enabled: 1
+    path: Assets/MyDefence/Scenes/Level06.unity
+    guid: a9d5994b443a6e84194c51f507c4c04b
   - enabled: 1
     path: Assets/_Sample/15MainMenu/MainMenu.unity
     guid: 336f33f624d52ab41a33dbf4edc95ee4
   - enabled: 1
-    path: Assets/_Sample/15MainMenu/Title.unity
-    guid: c71be7c2c02ad16438c9aea40d4e24c8
+    path: Assets/MyDefence/Scenes/LevelSelect.unity
+    guid: e5c6efb12be77cd4099b0295fcffa648
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

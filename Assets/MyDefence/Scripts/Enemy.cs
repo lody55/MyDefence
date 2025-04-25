@@ -8,15 +8,23 @@ namespace MyDefence
         //필드
         #region Field
         [SerializeField] Image EnemyUI;
-        [SerializeField]
-        private float moveSpeed = 5f;
+        
+        [SerializeField]private float moveSpeed = 5f;
         private float startMoveSpeed; //이동속도 - origin
         private Vector3 targetPosition;     
         private int wayPointIndex = 0;   //웨이포인트 배열의 인덱스
         private Transform target;   //웨이포인트 오브젝트의 트랜스폼 객체
         private float hp;    //적 체력
+        private bool isDeath = false;   //죽음 체크
+        private bool isArrive = false;
+
+        public bool IsArrive
+        {
+            get { return isArrive; }
+        }
+
         [SerializeField] private float startHp = 100f; // 체력초기화
-        private int rewardGold = 50; //리워드 골드
+        [SerializeField]private int rewardGold = 50; //리워드 골드
         public GameObject deathEffectPrefab; //죽음 이펙트 프리펩
 
         #endregion
@@ -34,6 +42,7 @@ namespace MyDefence
         // Update is called once per frame
         void Update()
         {
+            
             //이동 구현
             Vector3 dir = target.position - this.transform.position;
             transform.Translate(dir.normalized * Time.deltaTime * moveSpeed,Space.World);
@@ -61,14 +70,18 @@ namespace MyDefence
             // 웨이포인트가 남아있다면 이동
             if (wayPointIndex < WayPoints.wayPoints.Length)
             {
-                
+               
+
                 target = WayPoints.wayPoints[wayPointIndex];
                 
             }
             else
             {
+                Wavemanager.enemyAlive--;
                 PlayerStats.UseLife(1);
-               //Debug.Log("목표 지점 도달 - 이동 종료");
+                //Debug.Log("목표 지점 도달 - 이동 종료");
+                
+                Debug.Log($"enemyAlive : {Wavemanager.enemyAlive}");
                 Destroy(gameObject);
             }
 
@@ -77,6 +90,7 @@ namespace MyDefence
         //데미지 처리
         public void TakeDamage(float damage)
         {
+            if (isArrive) return;
             //연산
             hp -= damage;
             //Debug.Log($"현재 체력 : {hp}");
@@ -86,14 +100,17 @@ namespace MyDefence
             //데미지 효과
 
 
-            //죽음 체크
-            if(hp <= 0)
+            //죽음 체크 , 두번 죽는것 체크
+            if(hp <= 0 && isDeath == false)
             {
                 Die();
             }
         }
         private void Die()
         {
+            if (isDeath) return;
+
+            isDeath = true;
             //보상, 벌
             //리워드 50Gold 지급
             PlayerStats.AddMoney(rewardGold);
@@ -101,7 +118,13 @@ namespace MyDefence
             //VFX , SFX
             //죽는 파티클 이펙트 만들어서 처리
             GameObject effectGo = Instantiate(deathEffectPrefab,this.transform.position,Quaternion.identity);
+
+            //Enemy 카운팅
+            Wavemanager.enemyAlive--;
+            Debug.Log($"enemyAlive : {Wavemanager.enemyAlive}");
+
             //킬
+            
             Destroy(this.gameObject,0f);
             Destroy(effectGo, 2f);
         }

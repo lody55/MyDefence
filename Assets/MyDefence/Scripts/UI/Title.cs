@@ -5,7 +5,7 @@ namespace MyDefence
 {
     public class Title : MonoBehaviour
     {
-        [SerializeField] int sceneIndex = 0;
+        //[SerializeField] int sceneIndex = 0;
         [SerializeField] GameObject anyKey;
         //[SerializeField] float showAnyKey = 3f;
         //[SerializeField] float showLoadMenu = 13f;
@@ -35,7 +35,7 @@ namespace MyDefence
         }
         void LoadMenu()
         {
-            SceneManager.LoadScene(sceneIndex);
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
