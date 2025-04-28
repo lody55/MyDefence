@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 6782248580270629928}
   - component: {fileID: 8349584434860292332}
   - component: {fileID: 1178020222429663713}
+  - component: {fileID: -6924530888707490474}
   m_Layer: 0
   m_Name: Enemy_Simple
   m_TagString: Enemy
@@ -409,7 +410,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyUI: {fileID: 6752844491396493494}
-  moveSpeed: 12
   startHp: 100
   rewardGold: 50
   deathEffectPrefab: {fileID: 824152819073990011, guid: c6ee1bfbcab6d4d43939b2a986dafbd8, type: 3}
@@ -425,3 +425,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36994577f52e03946a3341c713b54ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6924530888707490474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3571082345514495269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7505e9d7681eed548be02af585514f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 12
+  startMoveSpeed: 12

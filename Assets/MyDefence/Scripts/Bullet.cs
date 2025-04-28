@@ -76,7 +76,7 @@ namespace MyDefence
         protected void AtkTarget(Transform _target)
         {
             //AtkDamage만큼 타겟의 hp 감산
-            Enemy enemy = _target.GetComponent<Enemy>();
+            IDamageable enemy = _target.GetComponent<IDamageable>();
             if (enemy != null)
             {
                 enemy.TakeDamage(atkDamage);

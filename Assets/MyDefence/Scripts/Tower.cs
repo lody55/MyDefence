@@ -9,7 +9,7 @@ namespace MyDefence
         public float attackRange = 7f;
         //가장 가까운 적
         protected Transform target;
-        protected Enemy targetEnemy;
+        protected IDamageable targetEnemy;
 
         //Enemy tag
         public string enemyTag = "Enemy";
@@ -46,7 +46,8 @@ namespace MyDefence
             {
                 //종점에 도착한 enemy 제거
                 Enemy arriveEnemy = enemy.GetComponent<Enemy>();
-                if(arriveEnemy != null && arriveEnemy.IsArrive == true)
+                EnemyMove enemyMove = enemy.GetComponent<EnemyMove>();
+                if(arriveEnemy != null && enemyMove.IsArrive == true)
                 {
                     continue;
                 }
@@ -65,7 +66,7 @@ namespace MyDefence
 
 
                 target = nearEnemy.transform;
-                targetEnemy = target.GetComponent<Enemy>();
+                targetEnemy = target.GetComponent<IDamageable>();
                 //Debug.Log("Find target");
             }
             else
